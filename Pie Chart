@@ -1,0 +1,21 @@
+# Load necessary library
+library(ggplot2)
+
+# Create the dataset
+data <- data.frame(
+  Company = c("A", "B", "C", "D"),
+  Market_Share = c(20, 30, 25, 25)
+)
+
+# Convert Market_Share to a percentage format for better labels
+data$Market_Share_Percent <- paste0(data$Market_Share, "%")
+
+# Create a pie chart
+ggplot(data, aes(x = "", y = Market_Share, fill = Company)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y") +  # Convert bar chart to pie chart
+  labs(
+    title = "Market Share by Company"
+  ) +
+  theme_void() +  # Remove axis and grid lines for pie chart
+  geom_text(aes(label = Market_Share_Percent), position = position_stack(vjust = 0.5))  # Add labels
