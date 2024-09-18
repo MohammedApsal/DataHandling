@@ -1,0 +1,18 @@
+# Load necessary library
+library(ggplot2)
+
+# Create the dataset
+data <- data.frame(
+  Weight = c(60, 65, 70, 72, 75),
+  Height = c(170, 175, 168, 180, 178)
+)
+
+# Create a scatter plot
+ggplot(data, aes(x = Weight, y = Height)) +
+  geom_point(color = "blue", size = 3) +  # Scatter plot points
+  labs(
+    title = "Scatter Plot of Weight vs. Height",
+    x = "Weight (kg)",
+    y = "Height (cm)"
+  ) +
+  theme_minimal()
