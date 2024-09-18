@@ -1,0 +1,26 @@
+# Load necessary libraries
+library(ggplot2)
+library(reshape2)
+
+# Create the dataset
+data <- data.frame(
+  Month = c("Jan", "Feb", "Mar", "Apr", "May"),
+  City_A = c(5, 6, 7, 8, 9),
+  City_B = c(10, 11, 12, 13, 14),
+  City_C = c(15, 16, 17, 18, 19)
+)
+
+# Reshape the data to a long format
+data_melted <- melt(data, id.vars = "Month", variable.name = "City", value.name = "Temperature")
+
+# Create a heatmap
+ggplot(data_melted, aes(x = Month, y = City, fill = Temperature)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient(low = "lightblue", high = "darkred") +
+  labs(
+    title = "Monthly Temperatures in Cities",
+    x = "Month",
+    y = "City",
+    fill = "Temperature"
+  ) +
+  theme_minimal()
