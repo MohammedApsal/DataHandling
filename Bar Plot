@@ -1,0 +1,18 @@
+# Load necessary library
+library(ggplot2)
+
+# Create the dataset
+data <- data.frame(
+  Product = c("A", "B", "C", "D", "E"),
+  Sales = c(300, 450, 500, 350, 400)
+)
+
+# Create a bar plot
+ggplot(data, aes(x = Product, y = Sales, fill = Product)) +
+  geom_bar(stat = "identity", color = "black") +  # Bar plot with borders
+  labs(
+    title = "Sales by Product",
+    x = "Product",
+    y = "Sales"
+  ) +
+  theme_minimal()
